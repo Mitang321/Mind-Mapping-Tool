@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Node from "./Node";
 import Branch from "./Branch";
 import "./Canvas.css";
 
-const Canvas = ({ selectedNode, setSelectedNode }) => {
-  const [nodes, setNodes] = useState([]);
-  const [branches, setBranches] = useState([]);
+const Canvas = ({
+  nodes,
+  setNodes,
+  branches,
+  setBranches,
+  selectedNode,
+  setSelectedNode,
+}) => {
+  const canvasRef = useRef();
 
   const addNode = (e) => {
     const newNode = {
@@ -48,7 +54,7 @@ const Canvas = ({ selectedNode, setSelectedNode }) => {
   };
 
   return (
-    <div className="canvas" onDoubleClick={addNode}>
+    <div className="canvas" onDoubleClick={addNode} ref={canvasRef}>
       {branches.map((branch) => (
         <Branch key={branch.id} branch={branch} nodes={nodes} />
       ))}

@@ -1,0 +1,9 @@
+.export-panel {
+  margin-bottom: 20px;
+}
+
+.export-panel button {
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}

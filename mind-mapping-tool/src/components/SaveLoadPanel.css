@@ -1,0 +1,11 @@
+.save-load-panel {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.save-load-panel button {
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
