@@ -11,9 +11,11 @@ const Node = ({ node, updateNode, deleteNode, addBranch, setSelectedNode }) => {
     updateNode(updatedNode);
   };
 
-  const handleDoubleClick = () => {
-    setIsEditing(true);
-    setSelectedNode(node);
+  const handleClick = () => {
+    if (!isEditing) {
+      setIsEditing(true);
+      setSelectedNode(node);
+    }
   };
 
   const handleChange = (e) => {
@@ -55,7 +57,7 @@ const Node = ({ node, updateNode, deleteNode, addBranch, setSelectedNode }) => {
 
   return (
     <Draggable position={{ x: node.x, y: node.y }} onStop={handleStop}>
-      <div className="node" style={nodeStyle}>
+      <div className="node">
         {isEditing ? (
           <input
             type="text"
@@ -65,7 +67,9 @@ const Node = ({ node, updateNode, deleteNode, addBranch, setSelectedNode }) => {
             autoFocus
           />
         ) : (
-          <span onDoubleClick={handleDoubleClick}>{node.text}</span>
+          <span onClick={handleClick} style={nodeStyle}>
+            {node.text}
+          </span>
         )}
         <div className="controls">
           <button onClick={handleBranch}>Branch</button>

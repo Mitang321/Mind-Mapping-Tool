@@ -15,10 +15,11 @@ const Canvas = ({
   const canvasRef = useRef();
 
   const addNode = (e) => {
+    const rect = canvasRef.current.getBoundingClientRect();
     const newNode = {
       id: nodes.length + 1,
-      x: e.clientX,
-      y: e.clientY,
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
       text: `Node ${nodes.length + 1}`,
       color: "#f0f0f0",
       size: "medium",

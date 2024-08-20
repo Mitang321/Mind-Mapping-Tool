@@ -7,8 +7,8 @@ const Branch = ({ branch, nodes }) => {
 
   if (!startNode || !endNode) return null;
 
-  const startX = startNode.x + 75; // Center of node (assuming 150px width)
-  const startY = startNode.y + 20; // Center of node (assuming 40px height)
+  const startX = startNode.x + 75;
+  const startY = startNode.y + 20;
   const endX = endNode.x + 75;
   const endY = endNode.y + 20;
 

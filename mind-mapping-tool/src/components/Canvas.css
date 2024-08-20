@@ -24,3 +24,10 @@
 .redo-button:hover {
   background-color: #0288d1;
 }
+.canvas {
+  position: relative;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  height: calc(100vh - 80px);
+}

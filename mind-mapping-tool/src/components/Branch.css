@@ -6,3 +6,7 @@
   top: 0;
   left: 0;
 }
+.branch {
+  position: absolute;
+  pointer-events: none;
+}
