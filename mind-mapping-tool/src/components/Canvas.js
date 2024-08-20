@@ -3,7 +3,7 @@ import Node from "./Node";
 import Branch from "./Branch";
 import "./Canvas.css";
 
-const Canvas = () => {
+const Canvas = ({ selectedNode, setSelectedNode }) => {
   const [nodes, setNodes] = useState([]);
   const [branches, setBranches] = useState([]);
 
@@ -13,6 +13,9 @@ const Canvas = () => {
       x: e.clientX,
       y: e.clientY,
       text: `Node ${nodes.length + 1}`,
+      color: "#f0f0f0",
+      size: "medium",
+      shape: "rectangle",
     };
     setNodes([...nodes, newNode]);
   };
@@ -56,6 +59,7 @@ const Canvas = () => {
           updateNode={updateNode}
           deleteNode={deleteNode}
           addBranch={addBranch}
+          setSelectedNode={setSelectedNode}
         />
       ))}
     </div>

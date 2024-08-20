@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Draggable from "react-draggable";
 import "./Node.css";
 
-const Node = ({ node, updateNode, deleteNode, addBranch }) => {
+const Node = ({ node, updateNode, deleteNode, addBranch, setSelectedNode }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [text, setText] = useState(node.text);
 
@@ -13,6 +13,7 @@ const Node = ({ node, updateNode, deleteNode, addBranch }) => {
 
   const handleDoubleClick = () => {
     setIsEditing(true);
+    setSelectedNode(node);
   };
 
   const handleChange = (e) => {
@@ -34,9 +35,27 @@ const Node = ({ node, updateNode, deleteNode, addBranch }) => {
     addBranch(parseInt(startNodeId), node.id);
   };
 
+  const nodeStyle = {
+    backgroundColor: node.color,
+    width:
+      node.size === "small"
+        ? "100px"
+        : node.size === "large"
+        ? "200px"
+        : "150px",
+    height:
+      node.size === "small" ? "30px" : node.size === "large" ? "60px" : "40px",
+    borderRadius:
+      node.shape === "circle"
+        ? "50%"
+        : node.shape === "ellipse"
+        ? "25%"
+        : "5px",
+  };
+
   return (
     <Draggable position={{ x: node.x, y: node.y }} onStop={handleStop}>
-      <div className="node">
+      <div className="node" style={nodeStyle}>
         {isEditing ? (
           <input
             type="text"
