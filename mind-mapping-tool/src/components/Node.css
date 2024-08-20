@@ -1,0 +1,28 @@
+.node {
+  width: 150px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.node input {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+.controls button {
+  margin: 0 5px;
+  font-size: 12px;
+  padding: 5px;
+  cursor: pointer;
+}
