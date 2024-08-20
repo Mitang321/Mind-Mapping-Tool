@@ -1,8 +1,12 @@
 import React, { useState, useReducer } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Canvas from "./components/Canvas";
 import CustomizationPanel from "./components/CustomizationPanel";
 import SaveLoadPanel from "./components/SaveLoadPanel";
 import ExportPanel from "./components/ExportPanel";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
 import "./App.css";
 
 const initialState = {
@@ -66,51 +70,68 @@ function App() {
   const redo = () => dispatch({ type: "REDO" });
 
   return (
-    <div className="App">
-      <h1>Mind Mapping Tool</h1>
-      <div className="toolbar">
-        <button
-          onClick={undo}
-          className="undo-button"
-          disabled={history.length === 0}
-        >
-          Undo
-        </button>
-        <button
-          onClick={redo}
-          className="redo-button"
-          disabled={redoStack.length === 0}
-        >
-          Redo
-        </button>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/mindmap"
+            element={
+              <div className="mindmap-container">
+                <h1>Mind Mapping Tool</h1>
+                <div className="toolbar">
+                  <button
+                    onClick={undo}
+                    className="undo-button"
+                    disabled={history.length === 0}
+                  >
+                    Undo
+                  </button>
+                  <button
+                    onClick={redo}
+                    className="redo-button"
+                    disabled={redoStack.length === 0}
+                  >
+                    Redo
+                  </button>
+                </div>
+                <div className="search-panel">
+                  <input
+                    type="text"
+                    placeholder="Search nodes..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="search-input"
+                  />
+                </div>
+                <SaveLoadPanel
+                  nodes={nodes}
+                  branches={branches}
+                  setNodes={setNodes}
+                  setBranches={setBranches}
+                />
+                <ExportPanel />
+                <CustomizationPanel
+                  selectedNode={null}
+                  setSelectedNode={() => {}}
+                />
+                <Canvas
+                  nodes={nodes}
+                  setNodes={setNodes}
+                  branches={branches}
+                  setBranches={setBranches}
+                  selectedNode={null}
+                  setSelectedNode={() => {}}
+                  searchQuery={searchQuery}
+                />
+              </div>
+            }
+          />
+        </Routes>
+        <Footer />
       </div>
-      <div className="search-panel">
-        <input
-          type="text"
-          placeholder="Search nodes..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="search-input"
-        />
-      </div>
-      <SaveLoadPanel
-        nodes={nodes}
-        branches={branches}
-        setNodes={setNodes}
-        setBranches={setBranches}
-      />
-      <ExportPanel />
-      <CustomizationPanel selectedNode={null} setSelectedNode={() => {}} />
-      <Canvas
-        nodes={nodes}
-        setNodes={setNodes}
-        branches={branches}
-        setBranches={setBranches}
-        selectedNode={null}
-        setSelectedNode={() => {}}
-        searchQuery={searchQuery}
-      />
-    </div>
+    </Router>
   );
 }
 
