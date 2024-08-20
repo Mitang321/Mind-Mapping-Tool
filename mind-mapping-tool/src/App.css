@@ -17,3 +17,46 @@ h1 {
   background-color: #f9f9f9;
   cursor: crosshair;
 }
+
+.toolbar {
+  margin: 10px;
+}
+
+.undo-button,
+.redo-button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.undo-button {
+  background-color: #ff5733;
+}
+
+.redo-button {
+  background-color: #33b5e5;
+}
+
+.undo-button:hover {
+  background-color: #c70039;
+}
+
+.redo-button:hover {
+  background-color: #0288d1;
+}
+
+.search-panel {
+  margin: 10px;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}

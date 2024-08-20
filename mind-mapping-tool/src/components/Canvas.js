@@ -10,6 +10,7 @@ const Canvas = ({
   setBranches,
   selectedNode,
   setSelectedNode,
+  searchQuery,
 }) => {
   const canvasRef = useRef();
 
@@ -53,12 +54,16 @@ const Canvas = ({
     }
   };
 
+  const filteredNodes = nodes.filter((node) =>
+    node.text.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="canvas" onDoubleClick={addNode} ref={canvasRef}>
       {branches.map((branch) => (
         <Branch key={branch.id} branch={branch} nodes={nodes} />
       ))}
-      {nodes.map((node) => (
+      {filteredNodes.map((node) => (
         <Node
           key={node.id}
           node={node}

@@ -1,9 +1,26 @@
-.canvas {
-  width: 100%;
-  height: 600px;
-  border: 1px solid #ccc;
-  position: relative;
-  overflow: hidden;
-  background-color: #f9f9f9;
-  cursor: crosshair;
+.undo-button,
+.redo-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.undo-button {
+  background-color: #ff5733;
+}
+
+.redo-button {
+  background-color: #33b5e5;
+}
+
+.undo-button:hover {
+  background-color: #c70039;
+}
+
+.redo-button:hover {
+  background-color: #0288d1;
 }
