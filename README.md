@@ -2,6 +2,11 @@
 
 ![image](https://github.com/user-attachments/assets/3c8900c6-7234-48ca-a02c-7ea60c29d248)
 
+## Live Preview
+
+[Live Preview](https://mind-mapping-tool.vercel.app/)
+
+
 ## Features:
 
 - **Visualize Your Ideas**: Effortlessly create and customize mind maps to visualize your thoughts and ideas.
